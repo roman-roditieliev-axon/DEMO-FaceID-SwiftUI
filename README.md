@@ -1,2 +1,2 @@
-# DEMO-TouchID-SwiftUI
-DEMO-TouchID-SwiftUI
+# DEMO-FaceID-SwiftUI
+DEMO-FaceID-SwiftUI
