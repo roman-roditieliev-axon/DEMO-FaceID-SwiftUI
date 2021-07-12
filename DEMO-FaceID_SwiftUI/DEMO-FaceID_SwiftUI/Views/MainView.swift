@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct MainView: View {
+
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack(alignment: .center) {
+                self.iconImageView
+                Text("Success authorization!")
+            }.padding(.top, -200)
+        }
     }
+
+    var iconImageView: some View {
+        Image(uiImage: UIImage(named: "success")!).resizable().frame(width: 150, height: 150)
+    }
+    
+    
 }
 
 struct MainView_Previews: PreviewProvider {

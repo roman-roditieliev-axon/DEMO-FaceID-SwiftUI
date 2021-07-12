@@ -23,11 +23,10 @@ struct LoginView: View {
             }.frame(minHeight: 55, maxHeight: 55)
                 .background(Color.blue)
                 .cornerRadius(5)
-                .padding(.top, 100)
-
         }.simultaneousGesture(TapGesture().onEnded{
             self.loginUser()
-        })
+        }).padding(.top, 80)
+
     }
 
     var placeHolderTextView: some View {
@@ -57,8 +56,6 @@ struct LoginView: View {
                     self.placeHolderTextView
                     self.passwordTextView
                     self.loginButton
-                    Spacer()
-                    Spacer()
                 }.padding(20)
             }
         }
