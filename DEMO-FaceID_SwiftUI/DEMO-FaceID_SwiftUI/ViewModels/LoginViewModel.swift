@@ -13,6 +13,9 @@ class LoginViewModel: ObservableObject, Identifiable {
     @Published var username = ""
     @Published var password = ""
 
+    // @Published var username = "a_podcast_admin@axon.dev"
+    //@Published var password = "Qwerty1234567"
+
     @Published var isLoggedIn = false
     @Published var isLoading = false
 
@@ -56,11 +59,11 @@ class LoginViewModel: ObservableObject, Identifiable {
             .store(in: &disposables)
     }
 
-    func login() {
+    func login(completion: @escaping(Bool) -> Void) {
         networkManager.login(email: username, password: password, completion: { response in
             self.storage.isFirstLaunch = false
+            completion(true)
         })
     }
-
 
 }

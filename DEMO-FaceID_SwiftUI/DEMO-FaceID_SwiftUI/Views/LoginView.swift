@@ -13,13 +13,14 @@ protocol LoginViewModelDelegate: View {
 
 struct LoginView: View, LoginViewModelDelegate {
 
-
     @ObservedObject var viewModel = LoginViewModel()
+    @State var isActive = false
+
     private let biometric = BiometricAuthManager()
     private var storage = Storage()
 
     var loginButton: some View {
-        NavigationLink(destination: MainView()) {
+        NavigationLink(destination: MainView(), isActive: $isActive) {
             VStack {
                 Spacer()
                 HStack {
@@ -55,8 +56,8 @@ struct LoginView: View, LoginViewModelDelegate {
         }.padding(EdgeInsets(top: 60, leading: .zero, bottom: .zero, trailing: .zero))
     }
 
-    var faceIconImageView: some View {
-        Image(uiImage: UIImage(named: "faceId")!).resizable().frame(width: 150, height: 150)
+    var faceIdEmptyView: some View {
+        EmptyView()
     }
 
     var loginOrBiometricView: some View {
@@ -70,24 +71,45 @@ struct LoginView: View, LoginViewModelDelegate {
                 }.padding(20)
             } else {
                 VStack(alignment: .leading) {
-                    self.faceIconImageView
+                    self.faceIdEmptyView
                 }.padding(20)
             }
-        }
-        .frame(width: 400, height: 300)
+        }.frame(width: 400, height: 300)
     }
 
     var body: some View {
         NavigationView {
-            LoadingView(isShowing: .constant(viewModel.isLoading)) {
-                loginOrBiometricView
+            NavigationLink(destination: MainView(), isActive: $isActive) {
+                LoadingView(isShowing: .constant(viewModel.isLoading)) {
+                    loginOrBiometricView
+                }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { (_) in
+                    print("UIApplication: background")
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { (_) in
+                    if isActive {
+                        authenticateUser()
+                    }
+                }
             }
         }
+    }
 
+    init() {
+        authenticateUser()
     }
 
     private func loginUser() {
-        viewModel.login()
+        viewModel.login(completion: { _ in
+
+        })
+    }
+
+    func authenticateUser() {
+        if !storage.isFirstLaunch {
+            biometric.authenticateUser { (str) in
+                loginUser()
+            }
+        }
     }
 
     func showAlert() {
