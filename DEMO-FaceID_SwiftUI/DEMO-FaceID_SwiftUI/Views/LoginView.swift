@@ -49,8 +49,7 @@ struct LoginView: View {
 
     var body: some View {
         NavigationView {
-            //isShowing: viewModel.isLoading
-            LoadingView(isShowing: .constant(false)) {
+            LoadingView(isShowing: .constant(viewModel.isLoading)) {
                 VStack(alignment: .leading) {
                     self.titleView
                     self.placeHolderTextView
@@ -63,7 +62,7 @@ struct LoginView: View {
     }
 
     private func loginUser() {
-
+        viewModel.login()
     }
 }
 

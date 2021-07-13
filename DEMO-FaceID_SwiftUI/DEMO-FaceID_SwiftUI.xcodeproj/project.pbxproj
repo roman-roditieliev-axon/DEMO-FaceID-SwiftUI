@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,9 +18,15 @@
 		CEB484AE269C385D0007590D /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484AD269C385D0007590D /* ActivityIndicator.swift */; };
 		CEB484B1269C38D70007590D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484B0269C38D70007590D /* LoadingView.swift */; };
 		CEB484B7269C3B110007590D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484B6269C3B110007590D /* LoginViewModel.swift */; };
+		CEB484BC269D54BB0007590D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484BB269D54BB0007590D /* NetworkManager.swift */; };
+		CEB484C3269D56170007590D /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484C2269D56170007590D /* APIHandler.swift */; };
+		CEB484CC269D58450007590D /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484CB269D58450007590D /* LoginResponse.swift */; };
+		F8919DCF9A6F1F61C564618C /* Pods_DEMO_FaceID_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0169274F36E0B784EBBDA2C /* Pods_DEMO_FaceID_SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A0169274F36E0B784EBBDA2C /* Pods_DEMO_FaceID_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DEMO_FaceID_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCAE54C71B29E0413FDB5BF9 /* Pods-DEMO-FaceID_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEMO-FaceID_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		CEB4847826984DF80007590D /* DEMO-FaceID_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEMO-FaceID_SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB4847D26984DF80007590D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEB4847F26984DF90007590D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,6 +40,10 @@
 		CEB484AD269C385D0007590D /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CEB484B0269C38D70007590D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CEB484B6269C3B110007590D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CEB484BB269D54BB0007590D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CEB484C2269D56170007590D /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
+		CEB484CB269D58450007590D /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		FE6ECD300AFB75240F96B9FC /* Pods-DEMO-FaceID_SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEMO-FaceID_SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +51,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8919DCF9A6F1F61C564618C /* Pods_DEMO_FaceID_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DB9CE707A047A9A32F16EC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0169274F36E0B784EBBDA2C /* Pods_DEMO_FaceID_SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA8EEE4561334150F01A1842 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE6ECD300AFB75240F96B9FC /* Pods-DEMO-FaceID_SwiftUI.debug.xcconfig */,
+				BCAE54C71B29E0413FDB5BF9 /* Pods-DEMO-FaceID_SwiftUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CEB4846F26984DF80007590D = {
 			isa = PBXGroup;
 			children = (
 				CEB4847A26984DF80007590D /* DEMO-FaceID_SwiftUI */,
 				CEB4847926984DF80007590D /* Products */,
+				BA8EEE4561334150F01A1842 /* Pods */,
+				9DB9CE707A047A9A32F16EC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,9 +96,11 @@
 		CEB4847A26984DF80007590D /* DEMO-FaceID_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				CEB484C6269D581E0007590D /* Models */,
 				CEB4847F26984DF90007590D /* Assets.xcassets */,
 				CEB4848426984DF90007590D /* Info.plist */,
 				CEB484972698629A0007590D /* Main */,
+				CEB484B9269C95B10007590D /* Network */,
 				CEB4848126984DF90007590D /* Preview Content */,
 				CEB484B4269C3A9C0007590D /* ViewModels */,
 				CEB4849B269867EC0007590D /* Views */,
@@ -122,6 +154,23 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CEB484B9269C95B10007590D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CEB484C2269D56170007590D /* APIHandler.swift */,
+				CEB484BB269D54BB0007590D /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CEB484C6269D581E0007590D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CEB484CB269D58450007590D /* LoginResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEB4848726984DF90007590D /* Build configuration list for PBXNativeTarget "DEMO-FaceID_SwiftUI" */;
 			buildPhases = (
+				D3E3E6481AFB1ECF01929147 /* [CP] Check Pods Manifest.lock */,
 				CEB4847426984DF80007590D /* Sources */,
 				CEB4847526984DF80007590D /* Frameworks */,
 				CEB4847626984DF80007590D /* Resources */,
+				E84602F49C4D746F849CF893 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -186,6 +237,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D3E3E6481AFB1ECF01929147 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DEMO-FaceID_SwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E84602F49C4D746F849CF893 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CEB4847426984DF80007590D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -193,7 +286,10 @@
 			files = (
 				CEB4848F269861780007590D /* AppDelegate.swift in Sources */,
 				CEB4847E26984DF80007590D /* ContentView.swift in Sources */,
+				CEB484CC269D58450007590D /* LoginResponse.swift in Sources */,
+				CEB484BC269D54BB0007590D /* NetworkManager.swift in Sources */,
 				CEB4849D269868050007590D /* LoginView.swift in Sources */,
+				CEB484C3269D56170007590D /* APIHandler.swift in Sources */,
 				CEB484A12698680F0007590D /* MainView.swift in Sources */,
 				CEB484AE269C385D0007590D /* ActivityIndicator.swift in Sources */,
 				CEB484B1269C38D70007590D /* LoadingView.swift in Sources */,
@@ -324,6 +420,7 @@
 		};
 		CEB4848826984DF90007590D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE6ECD300AFB75240F96B9FC /* Pods-DEMO-FaceID_SwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -346,6 +443,7 @@
 		};
 		CEB4848926984DF90007590D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCAE54C71B29E0413FDB5BF9 /* Pods-DEMO-FaceID_SwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
