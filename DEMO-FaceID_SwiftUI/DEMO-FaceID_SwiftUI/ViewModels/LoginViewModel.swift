@@ -20,7 +20,8 @@ class LoginViewModel: ObservableObject, Identifiable {
 
     private var disposables: Set<AnyCancellable> = []
 
-    var networkManager = NetworkManager()
+    private var networkManager = NetworkManager()
+    private var storage = Storage()
 
     @Published var logUrl = ""
 
@@ -38,8 +39,7 @@ class LoginViewModel: ObservableObject, Identifiable {
                 guard let response = response else {
                     return ""
                 }
-
-                return response.userId ?? ""
+                return response.userId
         }
         .eraseToAnyPublisher()
     }
@@ -57,7 +57,9 @@ class LoginViewModel: ObservableObject, Identifiable {
     }
 
     func login() {
-        networkManager.login(email: username, password: password)
+        networkManager.login(email: username, password: password, completion: { response in
+            self.storage.isFirstLaunch = false
+        })
     }
 
 

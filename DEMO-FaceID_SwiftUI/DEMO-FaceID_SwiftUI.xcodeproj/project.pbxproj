@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE24B736269DA12100CCA810 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24B735269DA12100CCA810 /* KeychainManager.swift */; };
+		CE24B73B269DA19600CCA810 /* BiometricAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24B73A269DA19600CCA810 /* BiometricAuthManager.swift */; };
+		CE24B73F269DB20500CCA810 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24B73E269DB20500CCA810 /* Storage.swift */; };
 		CEB4847E26984DF80007590D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB4847D26984DF80007590D /* ContentView.swift */; };
 		CEB4848026984DF90007590D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB4847F26984DF90007590D /* Assets.xcassets */; };
 		CEB4848326984DF90007590D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB4848226984DF90007590D /* Preview Assets.xcassets */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		A0169274F36E0B784EBBDA2C /* Pods_DEMO_FaceID_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DEMO_FaceID_SwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCAE54C71B29E0413FDB5BF9 /* Pods-DEMO-FaceID_SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEMO-FaceID_SwiftUI.release.xcconfig"; path = "Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		CE24B735269DA12100CCA810 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		CE24B73A269DA19600CCA810 /* BiometricAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthManager.swift; sourceTree = "<group>"; };
+		CE24B73E269DB20500CCA810 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		CEB4847826984DF80007590D /* DEMO-FaceID_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DEMO-FaceID_SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB4847D26984DF80007590D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CEB4847F26984DF90007590D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +79,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE24B733269DA0C200CCA810 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CE24B739269DA16900CCA810 /* Biometric */,
+				CE24B734269DA0DB00CCA810 /* Keychain */,
+				CEB484B9269C95B10007590D /* Network */,
+				CE24B73E269DB20500CCA810 /* Storage.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		CE24B734269DA0DB00CCA810 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				CE24B735269DA12100CCA810 /* KeychainManager.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		CE24B739269DA16900CCA810 /* Biometric */ = {
+			isa = PBXGroup;
+			children = (
+				CE24B73A269DA19600CCA810 /* BiometricAuthManager.swift */,
+			);
+			path = Biometric;
+			sourceTree = "<group>";
+		};
 		CEB4846F26984DF80007590D = {
 			isa = PBXGroup;
 			children = (
@@ -94,11 +127,11 @@
 		CEB4847A26984DF80007590D /* DEMO-FaceID_SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				CEB484C6269D581E0007590D /* Models */,
 				CEB4847F26984DF90007590D /* Assets.xcassets */,
 				CEB4848426984DF90007590D /* Info.plist */,
 				CEB484972698629A0007590D /* Main */,
-				CEB484B9269C95B10007590D /* Network */,
+				CE24B733269DA0C200CCA810 /* Managers */,
+				CEB484C6269D581E0007590D /* Models */,
 				CEB4848126984DF90007590D /* Preview Content */,
 				CEB484B4269C3A9C0007590D /* ViewModels */,
 				CEB4849B269867EC0007590D /* Views */,
@@ -282,12 +315,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB4848F269861780007590D /* AppDelegate.swift in Sources */,
+				CE24B73F269DB20500CCA810 /* Storage.swift in Sources */,
 				CEB4847E26984DF80007590D /* ContentView.swift in Sources */,
 				CEB484CC269D58450007590D /* LoginResponse.swift in Sources */,
 				CEB484BC269D54BB0007590D /* NetworkManager.swift in Sources */,
+				CE24B73B269DA19600CCA810 /* BiometricAuthManager.swift in Sources */,
 				CEB4849D269868050007590D /* LoginView.swift in Sources */,
 				CEB484A12698680F0007590D /* MainView.swift in Sources */,
 				CEB484AE269C385D0007590D /* ActivityIndicator.swift in Sources */,
+				CE24B736269DA12100CCA810 /* KeychainManager.swift in Sources */,
 				CEB484B1269C38D70007590D /* LoadingView.swift in Sources */,
 				CEB48492269861930007590D /* SceneDelegate.swift in Sources */,
 				CEB484AA269C381B0007590D /* TextFields.swift in Sources */,

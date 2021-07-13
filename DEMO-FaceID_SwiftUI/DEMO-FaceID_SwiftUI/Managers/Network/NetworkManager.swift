@@ -13,7 +13,7 @@ class NetworkManager {
     @Published var successResponse: LoginResponse?
     @Published var isLoading = false
 
-    func login(email: String, password: String) {
+    func login(email: String, password: String, completion: @escaping(LoginResponse) -> Void) {
         isLoading = true
 
         let url = "http://18.192.5.103:8080/api/tokens/credentials"
@@ -25,9 +25,9 @@ class NetworkManager {
             switch response.result {
             case .success(_):
                 do {
-                    print(String(data: response.data!, encoding: .utf8)!)
                     let result = try JSONDecoder().decode(LoginResponse.self, from: response.data!)
                     weakSelf.successResponse = result
+                    completion(result)
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                 }

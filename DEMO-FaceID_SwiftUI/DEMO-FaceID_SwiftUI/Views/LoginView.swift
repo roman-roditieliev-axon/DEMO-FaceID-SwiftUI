@@ -7,8 +7,16 @@
 
 import SwiftUI
 
-struct LoginView: View {
+protocol LoginViewModelDelegate: View {
+    func showAlert()
+}
+
+struct LoginView: View, LoginViewModelDelegate {
+
+
     @ObservedObject var viewModel = LoginViewModel()
+    private let biometric = BiometricAuthManager()
+    private var storage = Storage()
 
     var loginButton: some View {
         NavigationLink(destination: MainView()) {
@@ -47,15 +55,32 @@ struct LoginView: View {
         }.padding(EdgeInsets(top: 60, leading: .zero, bottom: .zero, trailing: .zero))
     }
 
-    var body: some View {
-        NavigationView {
-            LoadingView(isShowing: .constant(viewModel.isLoading)) {
+    var faceIconImageView: some View {
+        Image(uiImage: UIImage(named: "faceId")!).resizable().frame(width: 150, height: 150)
+    }
+
+    var loginOrBiometricView: some View {
+        Group {
+            if self.storage.isFirstLaunch {
                 VStack(alignment: .leading) {
                     self.titleView
                     self.placeHolderTextView
                     self.passwordTextView
                     self.loginButton
                 }.padding(20)
+            } else {
+                VStack(alignment: .leading) {
+                    self.faceIconImageView
+                }.padding(20)
+            }
+        }
+        .frame(width: 400, height: 300)
+    }
+
+    var body: some View {
+        NavigationView {
+            LoadingView(isShowing: .constant(viewModel.isLoading)) {
+                loginOrBiometricView
             }
         }
 
@@ -63,6 +88,10 @@ struct LoginView: View {
 
     private func loginUser() {
         viewModel.login()
+    }
+
+    func showAlert() {
+
     }
 }
 
