@@ -19,7 +19,6 @@
 		CEB484B1269C38D70007590D /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484B0269C38D70007590D /* LoadingView.swift */; };
 		CEB484B7269C3B110007590D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484B6269C3B110007590D /* LoginViewModel.swift */; };
 		CEB484BC269D54BB0007590D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484BB269D54BB0007590D /* NetworkManager.swift */; };
-		CEB484C3269D56170007590D /* APIHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484C2269D56170007590D /* APIHandler.swift */; };
 		CEB484CC269D58450007590D /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB484CB269D58450007590D /* LoginResponse.swift */; };
 		F8919DCF9A6F1F61C564618C /* Pods_DEMO_FaceID_SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0169274F36E0B784EBBDA2C /* Pods_DEMO_FaceID_SwiftUI.framework */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		CEB484B0269C38D70007590D /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CEB484B6269C3B110007590D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		CEB484BB269D54BB0007590D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CEB484C2269D56170007590D /* APIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHandler.swift; sourceTree = "<group>"; };
 		CEB484CB269D58450007590D /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		FE6ECD300AFB75240F96B9FC /* Pods-DEMO-FaceID_SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DEMO-FaceID_SwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-DEMO-FaceID_SwiftUI/Pods-DEMO-FaceID_SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,7 +155,6 @@
 		CEB484B9269C95B10007590D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CEB484C2269D56170007590D /* APIHandler.swift */,
 				CEB484BB269D54BB0007590D /* NetworkManager.swift */,
 			);
 			path = Network;
@@ -289,7 +286,6 @@
 				CEB484CC269D58450007590D /* LoginResponse.swift in Sources */,
 				CEB484BC269D54BB0007590D /* NetworkManager.swift in Sources */,
 				CEB4849D269868050007590D /* LoginView.swift in Sources */,
-				CEB484C3269D56170007590D /* APIHandler.swift in Sources */,
 				CEB484A12698680F0007590D /* MainView.swift in Sources */,
 				CEB484AE269C385D0007590D /* ActivityIndicator.swift in Sources */,
 				CEB484B1269C38D70007590D /* LoadingView.swift in Sources */,

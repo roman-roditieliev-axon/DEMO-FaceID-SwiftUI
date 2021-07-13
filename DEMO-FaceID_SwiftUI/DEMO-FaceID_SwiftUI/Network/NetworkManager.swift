@@ -8,7 +8,7 @@
 import Combine
 import Alamofire
 
-class NetworkManager: APIHandler {
+class NetworkManager {
 
     @Published var successResponse: LoginResponse?
     @Published var isLoading = false
@@ -17,18 +17,24 @@ class NetworkManager: APIHandler {
         isLoading = true
 
         let url = "http://18.192.5.103:8080/api/tokens/credentials"
-        let params : Parameters = ["email" : email, "password" : password, "clientSecret" : "3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+        let params = ["email" : email, "password" : password, "clientSecret" : "edd67720-9c02-11ea-bb37-0242ac130002"]
+        let headers : HTTPHeaders = ["Content-Type" : "application/json"]
 
-        AF.request(url, method: .post, parameters: params).responseDecodable { [weak self] (response: DataResponse<LoginResponse, AFError>) in
+        AF.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers).responseJSON { [weak self] response in
             guard let weakSelf = self else { return }
-
-            guard let response = weakSelf.handleResponse(response) as? LoginResponse else {
-                weakSelf.isLoading = false
-                return
+            switch response.result {
+            case .success(_):
+                do {
+                    print(String(data: response.data!, encoding: .utf8)!)
+                    let result = try JSONDecoder().decode(LoginResponse.self, from: response.data!)
+                    weakSelf.successResponse = result
+                } catch let error as NSError {
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+            case .failure(let error):
+                print("Request error: \(error.localizedDescription)")
             }
-
             weakSelf.isLoading = false
-            weakSelf.successResponse = response
         }
     }
 
