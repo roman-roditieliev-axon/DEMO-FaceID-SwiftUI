@@ -15,6 +15,7 @@ struct LoginView: View, LoginViewModelDelegate {
 
     @ObservedObject var viewModel = LoginViewModel()
     @State var isActive = false
+    @State var stopBacground = false
 
     private let biometric = BiometricAuthManager()
     private var storage = Storage()
@@ -30,12 +31,11 @@ struct LoginView: View, LoginViewModelDelegate {
                 }
                 Spacer()
             }.frame(minHeight: 55, maxHeight: 55)
-                .background(Color.blue)
-                .cornerRadius(5)
-        }.simultaneousGesture(TapGesture().onEnded{
-            self.loginUser()
-        }).padding(.top, 80)
-
+            .background(Color.blue)
+            .cornerRadius(5)
+        }.simultaneousGesture(TapGesture().onEnded {
+            self.authenticateUser()
+        }).padding(.top, 80).disabled(viewModel.username.isEmpty || viewModel.password.isEmpty)
     }
 
     var placeHolderTextView: some View {
@@ -60,55 +60,44 @@ struct LoginView: View, LoginViewModelDelegate {
         EmptyView()
     }
 
-    var loginOrBiometricView: some View {
-        Group {
-            if self.storage.isFirstLaunch {
-                VStack(alignment: .leading) {
-                    self.titleView
-                    self.placeHolderTextView
-                    self.passwordTextView
-                    self.loginButton
-                }.padding(20)
-            } else {
-                VStack(alignment: .leading) {
-                    self.faceIdEmptyView
-                }.padding(20)
-            }
-        }.frame(width: 400, height: 300)
-    }
-
     var body: some View {
         NavigationView {
-            NavigationLink(destination: MainView(), isActive: $isActive) {
+//            NavigationLink(destination: MainView(), isActive: $isActive) {
                 LoadingView(isShowing: .constant(viewModel.isLoading)) {
-                    loginOrBiometricView
-                }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { (_) in
-                    print("UIApplication: background")
+                    VStack(alignment: .leading) {
+                        self.titleView
+                        self.placeHolderTextView
+                        self.passwordTextView
+                        self.loginButton
+                    }.padding(20)
                 }
-                .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { (_) in
-                    if isActive {
-                        authenticateUser()
-                    }
-                }
+//            }
+        }.onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { (_) in
+            viewModel.goToBackground(background: true)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { (_) in
+            if storage.isInBackground {
+                viewModel.goToBackground(background: false)
+                authenticateUser()
             }
         }
     }
 
     init() {
-        authenticateUser()
+        if !storage.isFirstLaunch {
+            authenticateUser()
+        }
     }
 
     private func loginUser() {
         viewModel.login(completion: { _ in
-
+            self.isActive = true
         })
     }
 
     func authenticateUser() {
-        if !storage.isFirstLaunch {
-            biometric.authenticateUser { (str) in
-                loginUser()
-            }
+        biometric.authenticateUser { (str) in
+            loginUser()
         }
     }
 

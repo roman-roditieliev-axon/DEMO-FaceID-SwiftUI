@@ -10,6 +10,9 @@ import Foundation
 struct Storage {
     @UserDefault(key: .isFirstLaunch, defaultValue: true)
     var isFirstLaunch: Bool
+
+    @UserDefault(key: .isInBackground, defaultValue: false)
+    var isInBackground: Bool
 }
 
 @propertyWrapper
@@ -39,6 +42,7 @@ extension Bool: PropertyListValue {}
 
 extension Key {
     static let isFirstLaunch: Key = "isFirstLaunch"
+    static let isInBackground: Key = "isInBackground"
 }
 
 

@@ -19,49 +19,21 @@ class LoginViewModel: ObservableObject, Identifiable {
     @Published var isLoggedIn = false
     @Published var isLoading = false
 
-    @Published var shouldNavigate = false
-
-    private var disposables: Set<AnyCancellable> = []
-
     private var networkManager = NetworkManager()
     private var storage = Storage()
 
-    @Published var logUrl = ""
-
-    private var isLoadingPublisher: AnyPublisher<Bool, Never> {
-        networkManager.$isLoading
-            .receive(on: RunLoop.main)
-            .map { $0 }
-            .eraseToAnyPublisher()
-    }
-
-    private var isAuthenticatedPublisher: AnyPublisher<String, Never> {
-        networkManager.$successResponse
-            .receive(on: RunLoop.main)
-            .map { response in
-                guard let response = response else {
-                    return ""
-                }
-                return response.userId
-        }
-        .eraseToAnyPublisher()
-    }
-
     init() {
-        isLoadingPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.isLoading, on: self)
-            .store(in: &disposables)
 
-        isAuthenticatedPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.logUrl, on: self)
-            .store(in: &disposables)
+    }
+
+    func goToBackground(background: Bool) {
+        self.storage.isInBackground = background
     }
 
     func login(completion: @escaping(Bool) -> Void) {
         networkManager.login(email: username, password: password, completion: { response in
             self.storage.isFirstLaunch = false
+
             completion(true)
         })
     }
